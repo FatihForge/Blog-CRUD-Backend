@@ -43,7 +43,7 @@ blog-crud-backend/
 ├── config/
 │   └── db.js
 ├── models/
-│   └── Blog.js
+│   └── blog.js
 ├── node_modules/
 ├── .env
 ├── .gitignore

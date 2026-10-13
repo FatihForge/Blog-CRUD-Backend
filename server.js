@@ -32,11 +32,15 @@ app.post("/blogs", async (req, res) => {
         });
 
     } catch (error) {
-        res.status(400).json({
-            message: "Failed to create blog",
-            error: error.message
-        });
-    }
+    const isValidationError =
+        error.name === "ValidationError" ||
+        error.name === "CastError";
+
+    res.status(isValidationError ? 400 : 500).json({
+        message: "Failed to create blog",
+        error: error.message
+    });
+}
 });
 app.get("/blogs", async (req, res) => {
     try {
